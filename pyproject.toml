@@ -107,7 +107,10 @@ disable_error_code = "attr-defined, valid-type"
 disallow_untyped_defs = true
 mypy_path = "df_cards"
 exclude = "venv|migrations|build|dist|docs"
+plugins = ["mypy_django_plugin.main"]
 
+[tool.django-stubs]
+django_settings_module = "tests.settings"
 
 [tool.pytest.ini_options]
 
