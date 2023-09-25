@@ -8,57 +8,50 @@ from df_cards.fields import (
 )
 
 
-class BaseCard(models.Model):
-    class Meta:
-        abstract = True
-
+class DescriptionMixin:
     description = models.TextField(blank=True, default="")
+
+
+class SequenceMixin:
     sequence = models.PositiveIntegerField(default=0)
 
 
-class NamedCard(BaseCard):
+class ThumbnailMixin:
+    thumbnail = ThumbnailImageField()
+
+
+class IconMixin:
+    icon = IconImageField()
+
+
+class FullImageMixin:
+    full_image = FullImageField()
+
+
+class AvatarMixin:
+    avatar = AvatarImageField()
+
+
+class BaseCard(DescriptionMixin, SequenceMixin, models.Model):
     class Meta:
         abstract = True
 
+
+class NamedCard(BaseCard):
     name = models.CharField(max_length=255)
 
     def __str__(self) -> str:
         return self.name
 
-
-class TitledCard(BaseCard):
     class Meta:
         abstract = True
 
+
+class TitledCard(BaseCard):
     title = models.CharField(max_length=255)
 
     def __str__(self) -> str:
         return self.title
 
-
-class ThumbnailMixin(models.Model):
     class Meta:
         abstract = True
-
-    thumbnail = ThumbnailImageField()
-
-
-class IconMixin(models.Model):
-    class Meta:
-        abstract = True
-
-    icon = IconImageField()
-
-
-class FullImageMixin(models.Model):
-    class Meta:
-        abstract = True
-
-    full_image = FullImageField()
-
-
-class AvatarMixin(models.Model):
-    class Meta:
-        abstract = True
-
-    avatar = AvatarImageField()
