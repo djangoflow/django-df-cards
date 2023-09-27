@@ -8,28 +8,46 @@ from df_cards.fields import (
 )
 
 
-class DescriptionMixin:
+class DescriptionMixin(models.Model):
     description = models.TextField(blank=True, default="")
 
+    class Meta:
+        abstract = True
 
-class SequenceMixin:
+
+class SequenceMixin(models.Model):
     sequence = models.PositiveIntegerField(default=0)
 
+    class Meta:
+        abstract = True
 
-class ThumbnailMixin:
+
+class ThumbnailMixin(models.Model):
     thumbnail = ThumbnailImageField()
 
+    class Meta:
+        abstract = True
 
-class IconMixin:
+
+class IconMixin(models.Model):
     icon = IconImageField()
 
+    class Meta:
+        abstract = True
 
-class FullImageMixin:
+
+class FullImageMixin(models.Model):
     full_image = FullImageField()
 
+    class Meta:
+        abstract = True
 
-class AvatarMixin:
+
+class AvatarMixin(models.Model):
     avatar = AvatarImageField()
+
+    class Meta:
+        abstract = True
 
 
 class BaseCard(DescriptionMixin, SequenceMixin, models.Model):
