@@ -1,6 +1,6 @@
 [project]
 name = "django-df-cards"
-version = "0.0.2"
+version = "0.0.3"
 description = "django-df-cards"
 readme = "README.md"
 authors = [{name = "Apexive OSS", email = "open-source@apexive.com"}]
@@ -26,10 +26,8 @@ dependencies = [
     "django",
     "django-rest-framework",
     "pilkit>=2.0",
-    "django-imagekit>=4.1.0",
-    # Pillow 10.0.0+ is incompatible with django-imagekit
-    # https://github.com/matthewwithanm/django-imagekit/issues/566
-    "Pillow<10",
+    "django-imagekit>=5",
+    "Pillow",
 ]
 
 [project.optional-dependencies]
